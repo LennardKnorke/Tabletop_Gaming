@@ -1,2 +1,2 @@
 # Tabletop_Gaming
-Small practice project to design an online tabletop game that can be loaded with little game application to play
+Small practice project to design an online tabletop application that can be load small games to play with others.
