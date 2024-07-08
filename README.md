@@ -5,4 +5,8 @@ Main Folder contains scripts for running the launcher/selection environment
 "Games" Folder contains the "build" folder which contains precompiled loadables while the "source" folder contains the source code.
 
 
+start virtual env:
+CMD	<venv>\Scripts\activate.bat
+PS	<venv>\Scripts\Activate.ps1
+
 To compile games run: python setup.py build_ext --inplace --build-lib=games/build
