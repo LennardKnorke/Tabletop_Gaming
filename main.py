@@ -1,20 +1,39 @@
 #Main Application will run here
-import os
 
-from games.src.tictactoe import TicTacToe
+
+import os
 
 
 if __name__ == '__main__':
-    g = "TicTacToe"
+    run : bool = True
+    # Find available games
+    files : list = os.listdir("./games")
+    games : list = [f for f in files if f.endswith(".exe")]
+    games : list = [os.path.basename(f) for f in games]
 
-    choice = input("Choose:\nc - Client\ns - Server\n")
-    while choice.lower() not in ['c', 's']:
-        choice = input("Choose:\nc - Client\ns - Server\n")
+    if len(games) == 0:
+        print("No games found")
+        run = False
 
-    if choice.lower() == 'c':
-        game = TicTacToe(hosting=False)
-    else:
-        game = TicTacToe(hosting=True)
-    # Command Line Arguments (OPTIONAL. TO DO)
+    # Main loop
+    while run:
+        print("Choose a game by picking a valid number: ")
+        print("0: Exit")
+        for i, game in enumerate(games):
+            print(f"{i+1}: {game}")
+        choice = input("Enter your choice: ")
 
-    # Run Main Application.
+        # Validate choice
+        if not choice.isdigit():
+            continue
+        choice = int(choice)
+        if choice == 0:
+            break
+        if choice < 1 or choice > len(games):
+            continue
+
+        # Run a given game
+        os.system(f"start games/{games[choice-1]}")
+        print(f"Running {games[choice-1]}")
+
+
